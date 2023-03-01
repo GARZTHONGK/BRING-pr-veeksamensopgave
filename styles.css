@@ -1,4 +1,4 @@
-:root{
+:root {
     --green: #7bc144;
     --orange: #edcb35;
     --dark-gray: #333333;
@@ -7,16 +7,21 @@
     --arrow-down: polygon(0% 0%, 100% 0%, 100% 85%, 60% 85%, 51% 100%, 40% 85%, 0 85%);
     --arrow-up: polygon(50% 50px, 60% 0, 100% 0, 100% 100%, 0 100%, 0 0, 40% 0);
 }
+
 @font-face {
     font-family: mukta;
     src: url(Fonts/Mukta-Regular.ttf);
 }
-body{
+
+body {
     margin: 0;
     padding: 0;
     font-family: mukta;
+    overflow: hidden;
+    overflow-y: scroll;
 }
-#gray-button{
+
+#gray-button {
     height: 40px;
     width: 130px;
     border-radius: 5px;
@@ -27,105 +32,398 @@ body{
     margin: 20px;
 }
 
-#gray-button:link, #gray-button:visited, #gray-button:hover, #gray-button:active{
+#gray-button:link,
+#gray-button:visited,
+#gray-button:hover,
+#gray-button:active {
     text-decoration: none;
     color: white;
     background-color: var(--dark-gray);
 }
 
-label{
+label {
     display: none;
 }
-.nav .nav-menu{
+
+.searchbox {
+    display: flex;
+    align-items: center;
+    border: 1px solid lightgray;
+    gap: 150px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.searchbox input {
+    outline: none;
+    border: none;
+    font-size: 1em;
+}
+
+.nav .nav-menu {
     position: relative;
-    margin-top: 400px;
+    top: 50px;
     background-color: white;
-    width: 20vw;
+    width: 300px;
+    position: absolute;
+    right: 0;
+    transform: translateX(300px);
+    transition: 0.5s all ease-in;
 }
-.nav-menu h1{
-    margin-left: 10px;
+
+.nav-menu h1 {
+    margin: 30px;
 }
-.nav-menu-bottom{
+
+.nav-menu-bottom {
     background-color: var(--light-gray);
     padding: 20px;
 }
-.nav-menu-bottom svg{
+
+.nav-menu-bottom svg {
     height: 40px;
     margin: 0px;
     left: 10px;
-    
+
 }
-.nav-menu-bottom p{
+
+.nav-menu-bottom p {
     margin: 3px;
 
 }
-.nav .nav-menu > ul{
+
+.nav .nav-menu>ul {
     list-style-type: none;
+    padding: 0;
 }
-.nav-menu a:link, .nav-menu a:visited, .nav-menu a:hover, .nav-menu a:active{
+
+.nav-menu a:link,
+.nav-menu a:visited,
+.nav-menu a:hover,
+.nav-menu a:active {
     text-decoration: none;
     color: black;
 }
-.nav .nav-menu ul li:before{
+
+.nav .nav-menu ul li:before {
     content: url(Materialer/baseline-keyboard-arrow-right.svg);
     position: relative;
-    top:7px
+    top: 7px
 }
-    .nav{
-        display:flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 55px;
-        position:sticky;
-        top: 0;
-        width:100%;
-        z-index: 10;
-        background-color: white;
-        transform:translateX(-100vw);
-        transitions: 0.5s all ease-in;
-    }
-    #nav-toggle:checked + .nav{
-        transform: translateX(0);
-        
-    }
 
-    .divindiv{
-        background-image: url(Materialer/hero-02.jpg);
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: 500px;
-        background-position: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        text-align: center;
-        padding-bottom: 100px;
-        
-    }
-    .divindiv h1{
-        text-transform: uppercase;
-        font-size: 3rem;
-        text-shadow: 0px 0px 2px #000000;
-    }
-    .divindiv a{
-        height: 40px;
-        width: 130px;
-        border-radius: 5px;
-        background-color: var(--green);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .divindiv a:link,.divindiv a:visited, .divindiv:hover, .divindiv:active{
-        text-decoration: none;
-        color: white;
-    }
-    .tjenester{
+.nav-menu ul li {
+    border-bottom: 3px solid;
+    border-color: var(--light-gray);
+    padding: 10px;
+    font-size: 1.2rem;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 55px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    background-color: white;
+
+}
+
+#nav-toggle {
+    position: absolute;
+    right: 0px;
+    top: 15px;
+    scale: 2;
+    opacity: 0;
+}
+
+#nav-toggle:checked~.nav-menu {
+    transform: translateX(0);
+
+}
+
+#search-phone {
+    display: none;
+}
+
+.divindiv {
+    background-image: url(Materialer/hero-02.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding-bottom: 100px;
+
+}
+
+.divindiv h1 {
+    text-transform: uppercase;
+    font-size: 3rem;
+    text-shadow: 0px 0px 2px #000000;
+}
+
+.divindiv a {
+    height: 40px;
+    width: 130px;
+    border-radius: 5px;
+    background-color: var(--green);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.divindiv a:link,
+.divindiv a:visited,
+.divindiv:hover,
+.divindiv:active {
+    text-decoration: none;
+    color: white;
+}
+
+.tjenester {
+    /* background-color: lightcoral; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* grid-template-rows: 1fr 1fr; */
+    align-items: center;
+    justify-items: center;
+    background-color: white;
+    clip-path: var(--arrow-up);
+    margin-top: -150px;
+    padding-top: 30px;
+}
+
+.tjenester h1 {
+    grid-column: 1/-1;
+}
+
+.tjenester article {
+    display: flex;
+    width: 200px;
+    height: 300px;
+    margin: 0px;
+    flex-direction: column;
+    text-align: center;
+    padding: 0px;
+
+}
+
+.tjenester article img {
+    scale: 0.8;
+}
+
+.tjenester article h2 {
+    font-size: 1.2rem;
+}
+
+.ombring {
+    background-color: var(--orange);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 150px;
+    clip-path: var(--arrow-up);
+}
+
+.ombring h1 {
+    font-size: 2rem;
+    text-align: center;
+    grid-column: 1/-1;
+}
+
+.ombring img {
+    grid-column: 1/-1;
+    height: 150px;
+    width: 150px;
+    margin: auto;
+}
+
+.ombring #gray-button {
+    grid-column: 1/-1;
+    margin: auto;
+}
+
+.e-handel {
+    background-color: var(--green);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    text-align: center;
+    clip-path: var(--arrow-up);
+    margin-top: -50px;
+    padding-bottom: 70px;
+
+}
+
+.e-handel img {
+    height: 150px;
+    width: 150px;
+}
+
+.e-handel h1 {
+    font-size: 2rem;
+    color: white;
+}
+
+.e-handel p {
+    color: white;
+}
+
+.modtagerservice {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    text-align: center;
+    padding-bottom: 100px;
+    clip-path: var(--arrow-up);
+    margin-top: -50px;
+    padding-top: 100px;
+
+}
+
+.modtagerservice img {
+    height: 150px;
+    width: 300px;
+}
+
+.modtagerservice h1 {
+    font-size: 2rem;
+}
+
+.kundeservice-container {
+    background-color: var(--orange);
+    clip-path: var(--arrow-up);
+    margin-top: -50px;
+    ;
+
+}
+
+.kundeservice-container h1 {
+    font-size: 2rem;
+}
+
+.kundeservice {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto 1fr;
+    padding: 30px;
+    padding-top: 40px;
+    padding-bottom: 70px;
+    margin: auto;
+
+}
+
+.kundeservice h1 {
+    grid-column: 1/-1;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.kundeservice img {
+    width: 300px;
+}
+
+.kundeservice-text {
+    width: 500px;
+}
+
+.kundeservice #gray-button {
+    grid-column: 1/-1;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.join {
+    background-image: url(Materialer/budbil1.jpg);
+    background-position: center;
+    background-size: cover;
+    clip-path: var(--arrow-up);
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 100px;
+    margin-top: -60px;
+}
+
+.join h1 {
+    color: white;
+    font-size: 3rem;
+    margin-top: 30px;
+}
+
+.join #gray-button {
+    background-color: var(--green);
+}
+
+.kontakt {
+    background-color: var(--dark-gray);
+    padding: 30px;
+    clip-path: var(--arrow-up);
+    margin-top: -50px;
+
+
+}
+
+.info {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.hovedkvarter {
+    grid-row: 1/-1;
+}
+
+
+.kontakt h1 {
+    color: white;
+    text-align: center;
+}
+
+.kontakt h2 {
+    color: #7bc144;
+}
+
+.kontakt p {
+    color: white;
+}
+
+.socials {
+    height: 100px;
+    width: 250px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+}
+
+.socials svg {
+    height: 50px;
+    width: 50px;
+    fill: var(--svg-gray);
+}
+
+@media screen and (max-width: 720px) {
+    .tjenester {
         /* background-color: lightcoral; */
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
         /* grid-template-rows: 1fr 1fr; */
         align-items: center;
         justify-items: center;
@@ -134,207 +432,8 @@ label{
         margin-top: -150px;
         padding-top: 30px;
     }
-    .tjenester h1{
-        grid-column: 1/-1;
-    }
-    .tjenester article{
-        display:flex;
-        width: 200px;
-        height: 300px;
-        margin: 0px;
-        flex-direction: column;
-        text-align: center;
-        padding: 0px;
-        
-    }
-    .tjenester article img{
-        scale: 0.8;
-    }
-    .tjenester article h2{
-        font-size: 1.2rem;
-    }
-    .ombring{
-        background-color: var(--orange);
-        display:grid;
-        grid-template-columns: 1fr 1fr;
-        padding: 150px;
-        clip-path: var(--arrow-up);
-    }
-    .ombring h1{
-        font-size: 2rem;
-        text-align: center;
-        grid-column: 1/-1;
-    }
-    .ombring img{
-        grid-column: 1/-1;
-        height: 150px;
-        width: 150px;
-        margin: auto;
-    }
-    .ombring #gray-button{
-        grid-column: 1/-1;
-        margin: auto;
-    }
-    
-    .e-handel{
-        background-color: var(--green);
 
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 30px;
-        text-align: center;
-        clip-path: var(--arrow-up);
-        margin-top: -50px;
-        padding-bottom: 70px;
-
-    }
-    .e-handel img{
-        height: 150px;
-        width: 150px;
-    }
-    .e-handel h1{
-        font-size: 2rem;
-        color: white;
-    }
-    .e-handel p{
-        color:white;        
-    }
-    .modtagerservice{
-        background-color: white;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 30px;
-        text-align: center;
-        padding-bottom: 100px;
-        clip-path: var(--arrow-up);
-        margin-top: -50px;
-        padding-top: 100px;
-        
-    }
-    .modtagerservice img{
-        height: 150px;
-        width: 300px;
-    }
-    .modtagerservice h1{
-        font-size: 2rem;
-    }
-    .kundeservice-container{
-        background-color: var(--orange);
-        clip-path: var(--arrow-up);
-        margin-top: -50px;;
-        
-    }
-    .kundeservice-container h1{
-        font-size: 2rem;
-    }
-    .kundeservice{
-        display: grid;
-        grid-template-columns: auto auto;
-        grid-template-rows: auto 1fr;
-        padding: 30px;
-        padding-top: 40px;
-        padding-bottom: 70px;
-        margin: auto;
-        
-    }
-    .kundeservice h1{
-        grid-column: 1/-1;
-        margin: auto;
-        margin-top: 50px;
-    }
-    .kundeservice img{
-        width: 300px;
-    }
-    .kundeservice-text{
-        width: 500px;
-    }
-    .kundeservice #gray-button{
-        grid-column: 1/-1;
-        margin: auto;
-        margin-top: 20px;
-    }
-    .join{
-        background-image: url(Materialer/budbil1.jpg);
-        background-position: center;
-        background-size: cover;
-        clip-path: var(--arrow-up);
-        background-repeat: no-repeat;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding-top: 20px;
-        padding-bottom: 100px;
-        margin-top: -60px;
-    }
-    .join h1{
-        color: white;
-        font-size: 3rem;
-        margin-top: 30px;
-    }
-    .join #gray-button{
-        background-color: var(--green);
-    }
-    .kontakt{
-        background-color: var(--dark-gray);
-        padding: 30px;
-        clip-path: var(--arrow-up);
-        margin-top: -50px;
-        
-        
-    }
-    .info{
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
-    }
-    .hovedkvarter{
-        grid-row: 1/-1;
-    }
-    
-    
-    .kontakt h1{
-        color: white;
-        text-align: center;
-    }
-    .kontakt h2{
-        color: #7bc144;
-    }
-    .kontakt p{
-        color: white;
-    }
-    
-    .socials{
-        height: 100px;
-        width: 250px;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        margin: auto;
-    }
-    .socials svg{
-        height: 50px;
-        width: 50px;
-        fill: var(--svg-gray);
-    }
-    @media screen and (max-width: 720px) {
-        .tjenester{
-            /* background-color: lightcoral; */
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            /* grid-template-rows: 1fr 1fr; */
-            align-items: center;
-            justify-items: center;
-            background-color: white;
-            clip-path: var(--arrow-up);
-            margin-top: -150px;
-            padding-top: 30px;
-        }
-        .ombring{
+    .ombring {
         background-color: var(--orange);
         padding: 30px;
         display: flex;
@@ -343,16 +442,33 @@ label{
         clip-path: var(--arrow-up);
         margin-top: 20px;
         padding-bottom: 50px;
-        }
-        .kundeservice{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .kontakt{
-            display: grid;
-            grid-template-columns: 1fr;
-        }
-        
     }
+
+    .kundeservice {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .kontakt {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .searchbox {
+        display: none;
+    }
+    .nav-menu{
+        width: 100vw;
+        transform: translateX(300px);
+    transition: 0.5s all ease-in;
+    }
+
+    #search-phone {
+        display: block;
+        margin-left: auto;
+    }
+    
+
+}
